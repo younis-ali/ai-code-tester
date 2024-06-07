@@ -70,17 +70,14 @@ class TestCaseGenerator:
     # function to generate the test cases
     def get_test_cases(self, repo_name):
         
-        print(repo_name)
         # authorize the github using PAT
         auth = Auth.Token(self.config['git_access_token'])
 
         # get user details
         g = Github(auth=auth)
-        # user = g.get_user().login
 
         # get repo details
         repo = g.get_repo(repo_name)
-        # print(repo.get_commits())
 
         # View and get the last open pull request
         pulls = repo.get_pulls(state='open', sort='created')
